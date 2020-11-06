@@ -97,7 +97,7 @@ for epoch in range(params['nepochs']):
         # Make accumalated gradients of the discriminator zero.
         netD.zero_grad()
         # Create labels for the real data. (label=1)
-        label = torch.full((b_size, ), real_label, device=device)
+        label = torch.full((b_size, ), real_label, device=device, dtype=torch.float32 )
         output = netD(real_data).view(-1)
         errD_real = criterion(output, label)
         # Calculate gradients for backpropagation.
